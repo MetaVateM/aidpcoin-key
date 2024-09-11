@@ -1,9 +1,8 @@
-# ravencoin-key
+# aidpcoin-key
 
-Generate Ravencoin addresses from a mnemonic phrase following the standards BIP32, BIP39, BIP44.
+Generate Aidpcoin addresses from a mnemonic phrase following the standards BIP32, BIP39, BIP44.
 
-That is, use your 12 words to get addresses for Ravencoin mainnet and testnet.
-The library also support Evrmorecoin EVR, both mainnet and testnet.
+That is, use your 12 words to get addresses for Aidpcoin mainnet and testnet.
 
 
 ## Example get external and internal (change) addresses by path
@@ -13,15 +12,15 @@ A simple and "spot on" way to generate/derive addresses.
 If you need brutal performance check out getAddressByPath example below.
 
 ```
-import RavencoinKey from "@ravenrebels/ravencoin-key";
+import AidpcoinKey from "@metavatem/aidpcoin-key";
 //Or import as CommonsJS module
-//const RavencoinKey = require("@ravenrebels/ravencoin-key");
+//const AidpcoinKey = require("@metavatem/aidpcoin-key");
 
-const mnemonic = RavencoinKey.generateMnemonic();
+const mnemonic = AidpcoinKey.generateMnemonic();
 const ACCOUNT = 0; //default is zero
 const POSITION = 0; //the first address for this wallet
-const network = "rvn"; //or rvn-test for testnet
-const addressPair = RavencoinKey.getAddressPair(
+const network = "aidp"; //or aidp-test for testnet
+const addressPair = AidpcoinKey.getAddressPair(
   network,
   mnemonic,
   ACCOUNT,
@@ -61,16 +60,16 @@ Note this is the fastest way to generate/derive addresses since we can re-use th
 BUT its more technical since you have to provide the full BIP44 path.
 
 ```
-import RavencoinKey from "@ravenrebels/ravencoin-key";
+import AidpcoinKey from "@metavatem/aidpcoin-key";
 
-//use RavencoinKey.generateMnemonic() to generate mnemonic codes
+//use AidpcoinKey.generateMnemonic() to generate mnemonic codes
 const mnemonic =
   "Mnemonic erosion total live dial hamster helmet top response cash obey anger balcony";
 const path = "m/44'/175'/0'/0/0";
-const network = "rvn"; //or rvn-test for testnet
-const hdKey = RavencoinKey.getHDKey("rvn", mnemonic);
+const network = "aidp"; //or aidp-test for testnet
+const hdKey = AidpcoinKey.getHDKey("aidp", mnemonic);
 
-const address = RavencoinKey.getAddressByPath(network, hdKey, path);
+const address = AidpcoinKey.getAddressByPath(network, hdKey, path);
 
 console.log(address);
 
@@ -93,14 +92,14 @@ Outputs
 
 ```
 //As ES6 module
-import RavencoinKey from "@ravenrebels/ravencoin-key";
+import AidpcoinKey from "@metavatem/aidpcoin-key";
 ```
 
 ### CommonsJS module
 
 ```
 //As CommonsJS module
-const RavencoinKey = require("@ravenrebels/ravencoin-key");
+const AidpcoinKey = require("@metavatem/aidpcoin-key");
 ```
 
 ### Browserify
@@ -109,9 +108,9 @@ const RavencoinKey = require("@ravenrebels/ravencoin-key");
 //A browseriy:d version, with all the dependencies bundled for the web
 <html>
   <body>
-    <script src="./node_modules/@ravenrebels/ravencoin-key/dist/RavencoinKey.js"></script>
+    <script src="./node_modules/@metavatem/aidpcoin-key/dist/AidpcoinKey.js"></script>
     <script>
-      alert(RavencoinKey.generateMnemonic());
+      alert(AidpcoinKey.generateMnemonic());
     </script>
   </body>
 </html>
@@ -119,7 +118,7 @@ const RavencoinKey = require("@ravenrebels/ravencoin-key");
 
 ## install
 
-` npm install @ravenrebels/ravencoin-key`
+` npm install @metavatem/aidpcoin-key`
 
 ## build
 
@@ -157,9 +156,9 @@ Source: https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki
 
 `m / purpose' / coin_type' / account' / change / address_index`
 
-So in the case of Ravencoin the path m/44'/175'/0'/0/0 says "give me the first address"
+So in the case of Aidpcoin the path m/44'/175'/0'/0/0 says "give me the first address"
 
-The first part m/44'/175' says that the purpose is to use BIP44 with Ravencoin (175). Consider that static code.
+The first part m/44'/175' says that the purpose is to use BIP44 with Aidpcoin (175). Consider that static code.
 
 Accounts is deprecated and should be 0
 

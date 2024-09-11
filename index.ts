@@ -12,13 +12,13 @@ import HDKey from "hdkey";
 import { IAddressObject } from "./types";
 
 //Could not declare Network as enum, something wrong with parcel bundler
-export type Network = "rvn" | "rvn-test" | "evr" | "evr-test";
+export type Network = "aidp" | "aidp-test" | "evr" | "evr-test";
 
 function getNetwork(name: Network) {
   const c = name.toLowerCase(); //Just to be sure
   const map = {
-    rvn: chains.rvn.mainnet.versions,
-    "rvn-test": chains.rvn.testnet?.versions,
+    aidp: chains.aidp.mainnet.versions,
+    "aidp-test": chains.aidp.testnet?.versions,
     evr: chains.evr.mainnet.versions,
     "evr-test": chains.evr.testnet?.versions,
   };
@@ -39,7 +39,7 @@ export function getCoinType(network: Network) {
   return chain.bip44;
 }
 /**
- * @param network - should have value "rvn", "rvn-test", "evr" or "evr-test"
+ * @param network - should have value "aidp", "aidp-test", "evr" or "evr-test"
  * @param mnemonic - your mnemonic
  * @param account - accounts in BIP44 starts from 0, 0 is the default account
  * @param position - starts from 0
@@ -115,7 +115,7 @@ export function isMnemonicValid(mnemonic: string) {
 /**
  *
  * @param privateKeyWIF
- * @param network  should be "rvn" or "rvn-test"
+ * @param network  should be "aidp" or "aidp-test"
  * @returns object {address, privateKey (hex), WIF}
  */
 
@@ -133,7 +133,7 @@ export function getAddressByWIF(network: Network, privateKeyWIF: string) {
 export const entropyToMnemonic = bip39.entropyToMnemonic;
 
 export function generateAddressObject(
-  network: Network = "rvn"
+  network: Network = "aidp"
 ): IAddressObject {
   const mnemonic = generateMnemonic();
   const account = 0;
@@ -156,7 +156,7 @@ export function generateAddressObject(
  * @param network
  * @returns
  */
-export function generateAddress(network: Network = "rvn") {
+export function generateAddress(network: Network = "aidp") {
   return generateAddressObject(network);
 }
 export default {
